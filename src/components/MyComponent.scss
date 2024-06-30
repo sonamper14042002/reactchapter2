@@ -1,0 +1,30 @@
+/* MyComponent.css */
+.displayin4 {
+  .red {
+  color:rgb(117, 6, 245);
+  }
+  .green {
+  color : green;
+  }
+}
+.Userin4 {
+  background-color: #f4efef;
+  padding: 20px;
+  border-radius: 8px;
+  p {
+    color: #0e1804;
+    font-size: 16px;
+    text-align: center;
+  }
+  h1 {
+    color: #a70303;
+    font-size: 24px;
+    margin-bottom: 10px;
+    text-align: center;
+  }
+  img {
+    width: 800px; /* Đặt chiều rộng cố định */
+    display: block; /* Chuyển hình ảnh thành khối block */
+    margin: 0 auto;
+  }
+}
