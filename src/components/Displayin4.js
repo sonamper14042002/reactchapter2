@@ -10,7 +10,7 @@ class Displayin4 extends React.Component {
         })
     }
     render() {
-        const { lannisters, starks, name, age, death } = this.props;
+        const { lannisters, starks, name, age, death, handleDelete } = this.props;
         return (
             <div className ="displayin4">
                 <div><span onClick={() =>{this.handleShowdetail()}}> {this.state.isShow === true ? "hide" : "detail"} :</span> </div>  
@@ -22,11 +22,13 @@ class Displayin4 extends React.Component {
                             return (
                             <div key={character.id} className = 'green'>
                                 <div>My name is {character.name}, I am {character.age}, I live in {character.address}.</div>
+                                 <button onClick={()=> handleDelete(character.id,'lannisterFamily')}> Delete</button>
                             </div> )}
                             else{
                                  return (
                             <div key={character.id} className = 'red'>
                                 <div>My name is {character.name}, I am {character.age}, I live in {character.address}.</div>
+                                <button onClick={()=> handleDelete(character.id, 'lannisterFamily')}> Delete</button>
                             </div> )
                             }
                         })}
@@ -41,12 +43,14 @@ class Displayin4 extends React.Component {
                             return (
                                 <div key={character.id} className={character.age > 20 ? "green" : "red"}>
                                 <div>My name is {character.name}, I am {character.age}, I live in {character.address}.</div>
+                                 <button onClick={()=> handleDelete(character.id,'starkFamily')}> Delete</button>
                                 </div> )
                     })}
                     </>
                 )}
                 {this.state.isShow && ( 
                 <><h2>Paratheon Family :</h2>
+
                 {name && <div>My name is {name}, I am {age} and I was murdered by {death}.</div>}
                 <hr></hr></>)}
             </div>

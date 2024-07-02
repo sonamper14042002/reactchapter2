@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { startTransition } from 'react';
 import './MyComponent.scss'; // Import CSS file for MyComponent
 import UserIn4 from './UserIn4';
 import Displayin4 from './Displayin4';
@@ -33,14 +33,30 @@ class MyComponent extends React.Component {
              this.setState({
             starkFamily : [obj,...this.state.starkFamily]
         })}
-        
     }
+   
+    //  handelDelete = (id) => {
+    //     let listUser1 = this.state.lannisterFamily;
+    //     listUser1 = listUser1.filter(item => item.id !== id);
+    //     this.setState({
+    //         lannisterFamily : listUser1, 
+    //     })
+    // }
+   handleDelete = (id, family) => {
+    this.setState((prevState) => {
+        let updatedFamily = prevState[family].filter(item => item.id !== id);
+        return {
+            [family]: updatedFamily
+        };
+    });
+}
    render() {
     const paratheon =['robert paratheon','theon','danerys'];
         return(
             <>
                 <UserIn4
-                handleAdnewUser = {this.handleAdnewUser}/>
+                handleAdnewUser = {this.handleAdnewUser}
+                />
                 <br></br>
                 <Displayin4 
                 name = {paratheon[0]} 
@@ -48,6 +64,7 @@ class MyComponent extends React.Component {
                 death ="pig's bite"
                 lannisters={this.state.lannisterFamily} 
                 starks = {this.state.starkFamily}
+                handleDelete = {this.handleDelete}
                 />
            </>
        );
